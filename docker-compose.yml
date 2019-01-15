@@ -1,0 +1,25 @@
+version: '2'
+services:
+  backend:
+    build:
+      context: ./backend/
+    command: /usr/app/node_modules/.bin/nodemon src/index.js
+    volumes:
+      - ./backend/:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - "9000:9000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+  frontend:
+    build:
+      context: ./frontend/
+    command: npm start
+    volumes:
+      - ./frontend/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - backend
+    ports:
+      - "8000:8000"
