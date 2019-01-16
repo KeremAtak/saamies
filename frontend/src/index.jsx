@@ -5,7 +5,7 @@ const baseURL = process.env.ENDPOINT;
 
 const getWeatherFromApi = async () => {
   try {
-    const response = await fetch(`${baseURL}/weather`);
+    const response = await fetch(`${baseURL}/forecast`);
     return response.json();
   } catch (error) {
     console.error(error);
@@ -24,8 +24,9 @@ class Weather extends React.Component {
   }
 
   async componentWillMount() {
-    const weather = await getWeatherFromApi();
-    this.setState({ icon: weather.icon.slice(0, -1) });
+    const forecastData = await getWeatherFromApi();
+    const weather = forecastData.weather;
+    this.setState({ icon: weather[0].icon.slice(0, -1) });
   }
 
   render() {
