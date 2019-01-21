@@ -3,7 +3,7 @@ Frontend: http://localhost:8000/
 Backend: http://localhost:9000/api/forecast?lat=60&lon=25
 
 # Tasks done:
--Mandatory tasks. Project can be launched via docker-compose up -d --build. Tested on Linux.
+-Mandatory tasks. Project can be launched via sudo docker-compose up -d --build. Tested on Linux.
 
 -Task 1, forecast approximately 6 hours in the future is fetched.
 
